@@ -3,8 +3,7 @@ import {createAppContainer, ScrollView} from 'react-navigation';
 import {createDrawerNavigator, DrawerItems} from 'react-navigation-drawer';
 
 import IndicatorPage from './pages/IndicatorPage';
-import AboutPage from './pages/AppPage';
-import {SafeAreaView} from 'react-native';
+import AboutPage from './pages/AboutPage';
 
 const Drawer = props => (
   <ScrollView contentContainerStyle={{paddingTop: 50}}>
