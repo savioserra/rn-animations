@@ -4,6 +4,7 @@ import {useMemo} from 'react';
 import {ReanimatedCircle} from '../utils/ReanimatedComponents';
 import {spring} from 'react-native-redash';
 import Animated from 'react-native-reanimated';
+import Container from './Container';
 
 const {Value, multiply, set, useCode, sub} = Animated;
 
@@ -22,6 +23,7 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
   strokeColor,
   progress,
   strokeBackground,
+  children,
 }) => {
   const radius = useMemo(() => (circleSize - strokeWidth) / 2, [circleSize, strokeWidth]);
   const fullArc = useMemo(() => radius * 2 * Math.PI, [radius]);
@@ -45,31 +47,33 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
   );
 
   return (
-    <Svg width={circleSize} height={circleSize}>
-      <Circle
-        r={radius}
-        fill="none"
-        cx={center}
-        cy={center}
-        originX={center}
-        originY={center}
-        stroke={strokeBackground}
-        strokeWidth={strokeWidth}
-        strokeDasharray={`${fullArc} ${fullArc}`}
-      />
-      <ReanimatedCircle
-        r={radius}
-        fill="none"
-        cx={center}
-        cy={center}
-        originX={center}
-        originY={center}
-        stroke={strokeColor}
-        strokeWidth={strokeWidth}
-        strokeDasharray={`${fullArc} ${fullArc}`}
-        strokeDashoffset={animatedProgress}
-      />
-    </Svg>
+    <Container justify="center" items="center" height={circleSize} width={circleSize}>
+      {children}
+      <Svg width={circleSize} height={circleSize} style={{position: 'absolute'}}>
+        <Circle
+          r={radius}
+          fill="none"
+          cx={center}
+          cy={center}
+          originX={center}
+          originY={center}
+          stroke={strokeBackground}
+          strokeWidth={strokeWidth}
+          strokeDasharray={`${fullArc} ${fullArc}`}
+        />
+        <ReanimatedCircle
+          r={radius}
+          fill="none"
+          cx={center}
+          cy={center}
+          originX={center}
+          originY={center}
+          stroke={strokeColor}
+          strokeWidth={strokeWidth}
+          strokeDasharray={`${fullArc} ${fullArc}`}
+          strokeDashoffset={animatedProgress}></ReanimatedCircle>
+      </Svg>
+    </Container>
   );
 };
 
