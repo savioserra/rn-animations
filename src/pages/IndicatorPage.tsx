@@ -6,6 +6,8 @@ import CircularProgress from '../components/CircularProgress';
 const placeholderImage =
   'https://victorvhpg.github.io/minicurso-react.js/slides/img/logo.png';
 
+const tintColor = '#61dafb';
+
 const IndicatorPage: React.FC = () => {
   const [progress, setProgress] = useState(0.5);
 
@@ -18,7 +20,7 @@ const IndicatorPage: React.FC = () => {
           progress={progress}
           strokeWidth={10}
           circleSize={300}
-          strokeColor="#61dafb"
+          strokeColor={tintColor}
           strokeBackground="rgb(0, 0, 0, 0.2)">
           <Image style={{height: 250, width: 250}} source={{uri: placeholderImage}} />
         </CircularProgress>
@@ -26,9 +28,9 @@ const IndicatorPage: React.FC = () => {
         <Slider
           style={{width: 300, marginTop: 50}}
           onSlidingComplete={setProgress}
-          thumbTintColor="#61dafb"
-          maximumTrackTintColor="#61dafb"
-          minimumTrackTintColor="#61dafb"
+          thumbTintColor={tintColor}
+          maximumTrackTintColor={tintColor}
+          minimumTrackTintColor={tintColor}
         />
       </Container>
     </>
